@@ -1,0 +1,25 @@
+
+data:
+  image: busybox
+  volumes:
+    - /data
+  command: /bin/echo "Job Done"
+
+# nginx:
+#   build: nginx
+#   dockerfile: Dockerfile
+#   volumes:
+#     - ./nginx/html:/var/app/nginx/html
+#   ports:
+#     - "80:80"
+
+node:
+  image: ubuntu:14.04
+  volumes:
+    - .:/var/app/
+  working_dir: "/var/app"
+  expose:
+    - 3000
+    - 3001
+    - 5000
+  command: /bin/bash ./docker/node/init.sh
