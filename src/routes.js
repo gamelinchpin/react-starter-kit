@@ -8,6 +8,7 @@ import ContentPage from './components/ContentPage';
 import ContactPage from './components/ContactPage';
 import LoginPage from './components/LoginPage';
 import RegisterPage from './components/RegisterPage';
+import IntentPage from './components/IntentPage';
 import NotFoundPage from './components/NotFoundPage';
 import ErrorPage from './components/ErrorPage';
 
@@ -22,6 +23,8 @@ const router = new Router(on => {
   on('/login', async () => <LoginPage />);
 
   on('/register', async () => <RegisterPage />);
+
+  on('/intent', async () => <IntentPage />);
 
   on('*', async (state) => {
     const content = await http.get(`/api/content?path=${state.path}`);
