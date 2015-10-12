@@ -1,25 +1,16 @@
-
-data:
-  image: busybox
-  volumes:
-    - /data
-  command: /bin/echo "Job Done"
-
-# nginx:
-#   build: nginx
-#   dockerfile: Dockerfile
-#   volumes:
-#     - ./nginx/html:/var/app/nginx/html
-#   ports:
-#     - "80:80"
-
 node:
   image: ubuntu:14.04
   volumes:
     - .:/var/app/
   working_dir: "/var/app"
+  ports:
+   - "3000:3000"
+   - "3001:3001"
+   - "5000:5000"
   expose:
     - 3000
     - 3001
     - 5000
   command: /bin/bash ./docker/node/init.sh
+  external_links:
+   - afapi_dev_1:afapi
